@@ -6,19 +6,15 @@ This project demonstrates how to deploy a Node.js application on Kubernetes with
 
 - [Overview](#overview)
 - [Architecture](#architecture)
+- [Project Structure](#project-structure)
 - [Prerequisites](#prerequisites)
 - [Quick Start](#quick-start)
-- [Project Structure](#project-structure)
 - [Application Details](#application-details)
 - [Kubernetes Deployment](#kubernetes-deployment)
 - [Monitoring Setup](#monitoring-setup)
 - [Alerting Configuration](#alerting-configuration)
 - [Traffic Simulation](#traffic-simulation)
 - [Accessing Dashboards](#accessing-dashboards)
-- [Troubleshooting](#troubleshooting)
-- [Customization](#customization)
-- [Best Practices](#best-practices)
-- [Contributing](#contributing)
 
 ## Overview
 
@@ -34,23 +30,42 @@ This project provides a complete example of:
 
 ## Architecture
 
-
 ![nodejs](./images/architecture.gif)
 
+## Project Structure
+
+```
+nodejs-k8s-monitoring/
+├── app/                          # Node.js application
+│   ├── index.js                  # Main application file
+│   └── Dockerfile                # Container definition
+│  
+├── k8s/                          # Kubernetes manifests
+│   ├── nodejs-app.yaml           # Application deployment
+│   ├── nodejs-svc.yaml           # Service and ServiceMonitor
+│   ├── nodejs-monitor.yaml       # Prometheus and Grafana
+│   ├── nodejs-alert.yaml         # Alert rules
+│   └── nodejs-alert-manager.yaml # AlertManager configuration
+│ 
+├── scripts/                      # Testing and utility scripts
+│   ├── k8s-Master.sh             # Deploy Master Node 
+│   ├── k8s-Worker1.sh            # Deploy Worker Node 1 
+│   ├── k8s-Worker2.sh            # Deploy Worker Node 2
+│   └── send_request.sh           # Traffic generator
+│ 
+└── README.md                     # This documentation
+```
 ## Prerequisites
 
 Before you begin, ensure you have the following installed:
 
-- **Kubernetes Cluster**: minikube, kind, or any K8s cluster (v1.20+)
+- **Kubernetes Cluster**:Kubeadm, minikube, kind, or any K8s cluster (v1.20+)
 - **kubectl**: Kubernetes command-line tool
 - **Docker**: For building container images
-- **curl**: For testing and health checks
 - **bash**: For shell scripts
 
 ### Optional Tools
 - **Helm**: For easier Prometheus/Grafana installation (alternative approach)
-- **k9s**: For better Kubernetes cluster management
-- **jq**: For JSON processing in scripts
 
 ## Quick Start
 
@@ -140,30 +155,6 @@ kubectl get services
 
 ```
 
-## Project Structure
-
-```
-nodejs-k8s-monitoring/
-├── app/                          # Node.js application
-│   ├── index.js                  # Main application file
-│   └── Dockerfile                # Container definition
-│  
-├── k8s/                          # Kubernetes manifests
-│   ├── nodejs-app.yaml           # Application deployment
-│   ├── nodejs-svc.yaml           # Service and ServiceMonitor
-│   ├── nodejs-monitor.yaml       # Prometheus and Grafana
-│   ├── nodejs-alert.yaml         # Alert rules
-│   └── nodejs-alert-manager.yaml # AlertManager configuration
-│ 
-├── scripts/                      # Testing and utility scripts
-│   ├── k8s-Master.sh             # Deploy Master Node 
-│   ├── k8s-Worker1.sh            # Deploy Worker Node 1 
-│   ├── k8s-Worker2.sh            # Deploy Worker Node 2
-│   └── send_request.sh           # Traffic generator
-│ 
-└── README.md                     # This documentation
-```
-
 ## Application Details
 
 ### Node.js Application Features
@@ -248,7 +239,6 @@ Import these Grafana dashboard IDs:
 ## 🚨 Alerting Configuration
 
 ### Alert Rules (`nodejs-alert.yaml`)
-
 
 The system includes comprehensive alerting rules:
 
