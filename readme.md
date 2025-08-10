@@ -117,7 +117,6 @@ ubuntu@master:~/nodejs$ vim index.js
 ```
 # build app [index.js](./app/index.js)
 
-```bash
 # Build the Docker image
 ubuntu@master:~/nodejs$ vim [Dockerfile](./nodejs/Dockerfile)
 ubuntu@master:~/nodejs$ docker build -t nodejs-app .
@@ -128,7 +127,7 @@ kubectl apply -f k8s/[nodejs-svc.yaml](./k8s/nodejs-svc.yaml)
 kubectl apply -f k8s/[nodejs-monitor.yaml](./k8s/nodejs-monitor.yaml)
 kubectl apply -f k8s/[nodejs-alert.yaml](./k8s/nodejs-alert.yaml)
 kubectl apply -f k8s/[nodejs-alert-manager.yaml](./k8s/nodejs-alert-manager.yaml)
-```
+
 
 ### Verify Deployment
 
