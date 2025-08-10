@@ -97,9 +97,8 @@ This guide sets up a **Kubernetes cluster** with:
 - SSH key pair
 
 ### Script preparation
-
-```bash
 # Make [scripts](./scripts) executable
+```bash
 chmod +x scripts/*.sh
 ```
 
@@ -114,8 +113,9 @@ chmod +x scripts/*.sh
 
 ```bash
 ubuntu@master:~/nodejs$ mkdir nodejs
-ubuntu@master:~/nodejs$ vim [index.js](./nodejs/index.js)
+ubuntu@master:~/nodejs$ vim index.js
 ```
+# build app [index.js](./app/index.js)
 
 ```bash
 # Build the Docker image
